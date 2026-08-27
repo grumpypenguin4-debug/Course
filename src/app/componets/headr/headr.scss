@@ -1,0 +1,112 @@
+.h-1 {
+  background-color: #1f2b3a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 40px 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.right-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.menu-toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #ffffff;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.menu-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #4fd1c5;
+}
+
+.dsh {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 4px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.pic {
+  height: 34px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  display: block;
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid #e2554d;
+  color: #f28b85;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #e2554d;
+  color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .dsh {
+    font-size: 1.05rem;
+  }
+  .pic {
+    height: 26px;
+  }
+  .logout-btn {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+}
+.route-title {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 500;
+}

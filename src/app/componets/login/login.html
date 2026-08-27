@@ -1,0 +1,27 @@
+<div class="form-cont">
+  <div class="login-card">
+    <h2>تسجيل الدخول</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" formControlName="email">
+        @if (form.get('email')?.invalid && form.get('email')?.touched) {
+        <div class="error-message">البريد الإلكتروني غير صحيح</div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="password">كلمة المرور</label>
+        <input type="password" id="password" formControlName="password">
+        @if (form.get('password')?.invalid && form.get('password')?.touched) {
+        <div class="error-message">كلمة المرور غير صحيحة</div>
+        }
+      </div>
+
+      @if (loginError) {
+        <div class="error-message">{{ loginError }}</div>
+      }
+
+      <button type="submit" class="btn-submit">دخول</button>
+    </form>
+  </div>
+</div>

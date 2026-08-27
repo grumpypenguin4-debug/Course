@@ -1,0 +1,23 @@
+<aside class="sidebar" [class.open]="sidebarServices.isOpen()" appClickOutside
+  [appClickOutsideEnabled]="sidebarServices.isOpen()" (appClickOutside)="closeIfOpen()">
+
+  <div class="sidebar-header">
+    <button class="close-btn" (click)="sidebarServices.toggleSidebar()">✕</button>
+  </div>
+
+  <ul class="nav-list">
+    @for (item of sidebarServices.visibleSidebarItems(); track item.id) {
+    <li class="nav-item" [class.disabled]="item.isDisabled"
+      [routerLink]="!item.isDisabled ? item.route : null"
+      [routerLinkActive]="!item.isDisabled ? 'active' : null"
+      (click)="handleItemClick(item)">
+      <span class="icon">{{ item.icon }}</span>
+      <span class="title">{{ item.title }}</span>
+    </li>
+    }
+  </ul>
+
+  <div class="sidebar-footer">
+    <button class="logout-btn-sidebar" (click)="onLogout()">خروج</button>
+  </div>
+</aside>

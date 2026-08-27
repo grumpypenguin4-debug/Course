@@ -1,0 +1,19 @@
+<div class="settings-container">
+  <section class="permissions-section">
+    <h2>إدارة الصلاحيات</h2>
+    <div class="permissions-list">
+      @for (permission of permissions; track permission.id) {
+      <div class="permission-item">
+        <label [class.disabled]="!permission.canDisable && hasPermission()(permission.id)">
+          <input type="checkbox" [checked]="hasPermission()(permission.id)" (change)="togglePermission(permission.id)"
+            [disabled]="!permission.canDisable && hasPermission()(permission.id)" />
+          <span class="permission-label">{{ permission.label }}</span>
+          @if (!permission.canDisable) {
+          <span class="badge">إلزامي</span>
+          }
+        </label>
+      </div>
+      }
+    </div>
+  </section>
+</div>

@@ -1,0 +1,7 @@
+export enum PagePermissions {
+  HOME = 'HOME',
+  PROFILE = 'PROFILE',
+  SETTINGS = 'SETTINGS',
+  EDIT_PROFILE = 'EDIT_PROFILE',
+  DELETE_ACCOUNT = 'DELETE_ACCOUNT'
+}
