@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+/* إخفاء شريط التمرير للصفحة بأكملها ولكافة العناصر مستقبلاً */
+* {
+  -ms-overflow-style: none;  /* لمتصفحات Internet Explorer و Edge القديمة */
+  scrollbar-width: none;  /* لمتصفحات Firefox */
+}
+
+/* لمتصفحات Chrome, Safari, Opera و Edge الحديثة (WebKit) */
+*::-webkit-scrollbar {
+  display: none;
+}
