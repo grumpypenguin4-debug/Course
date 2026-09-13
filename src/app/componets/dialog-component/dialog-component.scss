@@ -1,0 +1,43 @@
+:host {
+  .mat-mdc-dialog-title {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .mat-mdc-dialog-content {
+    color: var(--color-neutral);
+    font-size: 0.95rem;
+  }
+
+  .mat-mdc-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 24px;
+  }
+
+  button.dialog-btn-cancel,
+  button.dialog-btn-confirm {
+    color: var(--color-neutral) !important;
+    font-weight: 600;
+    border-radius: 8px !important;
+    transition: background-color 0.2s ease;
+    min-width: 100px;
+  }
+
+  .dialog-btn-cancel {
+    background-color: var(--accent-red) !important;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--accent-red) 85%, black) !important;
+    }
+  }
+
+  .dialog-btn-confirm {
+    background-color: var(--color-accent-green-btn) !important;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--color-accent-green-btn) 85%, black) !important;
+    }
+  }
+}

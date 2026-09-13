@@ -5,11 +5,13 @@ import { AuthService } from '../../services/auth-service';
 import { AppClickOutsideDirective } from '../../directive/clickoutside';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatDialog} from '@angular/material/dialog';
+import { DialogComponent, DialogData } from '../dialog-component/dialog-component';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [RouterLink, RouterLinkActive, AppClickOutsideDirective, MatButton],
+  imports: [RouterLink, RouterLinkActive, AppClickOutsideDirective, MatButton, MatButtonModule],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
@@ -17,6 +19,23 @@ export class Sidebar {
   sidebarServices = inject(SidebarServices);
   router = inject(Router);
   authService = inject(AuthService);
+    dialog = inject(MatDialog);
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const data: DialogData = {
+      title: 'Confirm Logout',
+      message: 'Are you sure you want to log out?',
+      cancelLabel: 'No',
+      confirmLabel: 'Yes',
+      onConfirm: () => this.onLogout(),
+    };
+    this.dialog.open(DialogComponent,{
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data,
+    });
+  }
 
   constructor() {
     this.router.events
