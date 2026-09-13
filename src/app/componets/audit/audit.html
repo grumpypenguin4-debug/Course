@@ -1,0 +1,99 @@
+<div class="audit-page">
+  <header class="audit-header">
+    <div>
+      <p class="eyebrow">Security overview</p>
+      <h1>Audit Center</h1>
+    </div>
+
+    <div class="header-actions">
+      <div class="range-picker" aria-label="Time range selector">
+        @for (range of ranges; track range) {
+        <button type="button" class="range-btn" [class.active]="selectedRange() === range" (click)="setRange(range)">
+          {{ range }}
+        </button>
+        }
+      </div>
+    </div>
+  </header>
+
+  <section class="audit-summary">
+    @for (metric of metrics; track metric.label) {
+    <article class="stat-card">
+      <div class="stat-icon"><i [class]="metric.icon"></i></div>
+      <div class="stat-content">
+        <span class="label">{{ metric.label }}</span>
+        <strong>{{ metric.value }}</strong>
+        <span class="trend" [class.up]="metric.trend === 'up'" [class.down]="metric.trend === 'down'">
+          {{ metric.change }}
+        </span>
+      </div>
+    </article>
+    }
+  </section>
+
+  <section class="audit-grid">
+    <div class="panel activity-panel">
+      <div class="panel-header">
+        <h2>Recent activity</h2>
+        <div class="filter-group" aria-label="Audit filter">
+          @for (filter of filters; track filter) {
+          <button type="button" class="filter-btn" [class.active]="selectedFilter() === filter"
+            (click)="setFilter(filter)">
+            {{ filter }}
+          </button>
+          }
+        </div>
+      </div>
+
+      <div class="event-list">
+        @for (event of filteredActivity(); track event.id) {
+        <div class="event-item">
+          <div class="event-dot" [ngClass]="event.status.toLowerCase()"></div>
+          <div class="event-main">
+            <h3>{{ event.title }}</h3>
+            <div class="event-meta">
+              <span>{{ event.actor }}</span>
+              <span>{{ event.time }}</span>
+            </div>
+          </div>
+          <div class="event-side">
+            <span class="pill type">{{ event.type }}</span>
+            <span class="pill status" [class.success]="event.status === 'Success'"
+              [class.warning]="event.status === 'Warning'" [class.info]="event.status === 'Info'">
+              {{ event.status }}
+            </span>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="panel compliance-panel">
+      <div class="panel-header">
+        <h2>Compliance score</h2>
+      </div>
+
+      <div class="score-ring">
+        <div class="score-value">
+          <strong>89%</strong>
+          <span>Overall</span>
+        </div>
+      </div>
+
+      <div class="compliance-list">
+        @for (item of compliance; track item.label) {
+        <div class="compliance-item">
+          <div class="label-row">
+            <span>{{ item.label }}</span>
+            <strong>{{ item.value }}%</strong>
+          </div>
+          <div class="progress-bar">
+            <span [style.width.%]="item.value" [class.good]="item.tone === 'good'"
+              [class.warn]="item.tone === 'warn'"></span>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+</div>

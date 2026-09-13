@@ -1,5 +1,5 @@
 {
-  "name": "course",
+  "name": "fortress",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,10 +11,12 @@
   "private": true,
   "packageManager": "npm@11.18.0",
   "dependencies": {
+    "@angular/cdk": "^22.1.5",
     "@angular/common": "^22.0.0",
     "@angular/compiler": "^22.0.0",
     "@angular/core": "^22.0.0",
     "@angular/forms": "^22.0.0",
+    "@angular/material": "^22.1.5",
     "@angular/platform-browser": "^22.0.0",
     "@angular/router": "^22.0.0",
     "@fortawesome/fontawesome-free": "^7.3.1",

@@ -1,27 +1,40 @@
 <div class="form-cont">
   <div class="login-card">
-    <h2>تسجيل الدخول</h2>
+    <h2>Login</h2>
+
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="email">البريد الإلكتروني</label>
-        <input type="email" id="email" formControlName="email">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" />
+        </mat-form-field>
+
         @if (form.get('email')?.invalid && form.get('email')?.touched) {
-        <div class="error-message">البريد الإلكتروني غير صحيح</div>
+        <div class="error-message">Email is invalid</div>
         }
       </div>
+
       <div class="form-group">
-        <label for="password">كلمة المرور</label>
-        <input type="password" id="password" formControlName="password">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword() ? 'password' : 'text'" formControlName="password" />
+          <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility($event)"
+            [attr.aria-label]="hidePassword() ? 'Show password' : 'Hide password'"
+            [attr.aria-pressed]="!hidePassword()">
+            <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
         @if (form.get('password')?.invalid && form.get('password')?.touched) {
-        <div class="error-message">كلمة المرور غير صحيحة</div>
+        <div class="error-message">Password is invalid</div>
         }
       </div>
 
       @if (loginError) {
-        <div class="error-message">{{ loginError }}</div>
+      <div class="error-message">{{ loginError }}</div>
       }
 
-      <button type="submit" class="btn-submit">دخول</button>
+      <button mat-flat-button color="primary" type="submit" class="btn-submit">Login</button>
     </form>
   </div>
 </div>

@@ -26,10 +26,13 @@ export class Headr {
   );
 
   getTitleFromUrl(url: string): string {
-    if (url.includes('/profile')) return 'الملف الشخصي';
-    if (url.includes('/settings')) return 'الإعدادات';
-    if (url.includes('/login')) return 'تسجيل الدخول';
-    return 'الرئيسية';
+    if (url.includes('/profile')) return 'Profile';
+    if (url.includes('/vault')) return 'Vault';
+    if (url.includes('/audit')) return 'Audit';
+    if (url.includes('/generator')) return 'Generator';
+    if (url.includes('/settings')) return 'Settings';
+    if (url.includes('/login')) return 'Login';
+    return 'Home';
   }
 
   goToHome(): void {

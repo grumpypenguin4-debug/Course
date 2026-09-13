@@ -1,0 +1,75 @@
+<div class="password-generator-container">
+  <div class="header">
+    <h1>Password Generator</h1>
+    <p>Create strong, secure passwords instantly.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="result-box">
+      <span class="password-text">{{ password() }}</span>
+      <div class="action-buttons">
+        <button class="icon-btn" (click)="generatePassword()" title="Regenerate">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+        <button class="copy-btn" (click)="copyPassword()">
+          <i class="fa-regular fa-copy"></i> {{ copied() ? 'Copied!' : 'Copy' }}
+        </button>
+      </div>
+    </div>
+
+
+    <div class="strength-section" [class.weak]="strengthLevel() === 'Weak'"
+      [class.medium]="strengthLevel() === 'Medium'" [class.strong]="strengthLevel() === 'Strong'">
+      <div class="strength-info">
+        <span class="label">Strength</span>
+        <span class="strength-value">{{ strengthText() }}</span>
+      </div>
+      <div class="strength-bars">
+        <div class="bar" [class.active]="activeBars() > 0"></div>
+        <div class="bar" [class.active]="activeBars() > 1"></div>
+        <div class="bar" [class.active]="activeBars() > 2"></div>
+        <div class="bar" [class.active]="activeBars() > 3"></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+
+    <div class="length-section">
+      <span class="label">Length</span>
+      <input type="number" class="length-input" [ngModel]="length()"
+        (ngModelChange)="length.set($event); generatePassword()" min="6" max="32">
+    </div>
+
+
+    <div class="options-grid">
+      <div class="option-card" [class.selected]="includeUppercase()" (click)="toggleOption('upper')">
+        <div class="option-title">A-Z</div>
+        <div class="option-subtitle">Uppercase</div>
+      </div>
+
+      <div class="option-card" [class.selected]="includeLowercase()" (click)="toggleOption('lower')">
+        <div class="option-title">a-z</div>
+        <div class="option-subtitle">Lowercase</div>
+      </div>
+
+      <div class="option-card" [class.selected]="includeNumbers()" (click)="toggleOption('numbers')">
+        <div class="option-title">0-9</div>
+        <div class="option-subtitle">Numbers</div>
+      </div>
+
+      <div class="option-card" [class.selected]="includeSymbols()" (click)="toggleOption('symbols')">
+        <div class="option-title">!@#</div>
+        <div class="option-subtitle">Symbols</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+
+    <button class="save-vault-btn" (click)="saveToVault()">
+      <i class="fa-solid fa-vault"></i> Save to Vault
+    </button>
+  </div>
+</div>

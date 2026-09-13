@@ -13,11 +13,12 @@ export class Settings {
   authService = inject(AuthService);
 
   permissions = [
-    { id: PagePermissions.HOME, label: 'الصفحة الرئيسية', canDisable: false },
-    { id: PagePermissions.PROFILE, label: 'الملف الشخصي', canDisable: true },
-    { id: PagePermissions.SETTINGS, label: 'الإعدادات', canDisable: true },
-    { id: PagePermissions.EDIT_PROFILE, label: 'تعديل الملف الشخصي', canDisable: true },
-    { id: PagePermissions.DELETE_ACCOUNT, label: 'حذف الحساب', canDisable: true }
+    { id: PagePermissions.HOME, label: 'Home', canDisable: false },
+    { id: PagePermissions.PROFILE, label: 'Profile', canDisable: false },
+    { id: PagePermissions.VAULT, label: 'Vault', canDisable: true },
+    { id: PagePermissions.AUDIT, label: 'Audit', canDisable: true },
+    { id: PagePermissions.GENERATOR, label: 'Generator', canDisable: true },
+    { id: PagePermissions.SETTINGS, label: 'Settings', canDisable: false },
   ];
 
   hasPermission = computed(() => {

@@ -1,0 +1,66 @@
+$primary: #1a2b3c;
+$secondary: #2ecc71;
+$tertiary: #e74c3c;
+$neutral: #f8fafc;
+
+$bg-main: $primary;
+$text-main: $neutral;
+$text-muted: rgba($neutral, 0.65);
+$border-color: rgba($neutral, 0.12);
+$accent-green: $secondary;
+$accent-green-btn: $secondary;
+$card-bg: #1e293b;
+$surface-dark: #121820;
+$surface-darker: #2c3542;
+$surface-badge: #273342;
+$on-accent: #064e3b;
+
+$bg-color: #111418;
+$card-bg: #191e24;
+$border-color: #2a323d;
+$accent-green: #22c55e;
+$text-main: #ffffff;
+$text-muted: #94a3b8;
+
+$muted-surface: #232b35;
+$muted-surface-hover: #2d3748;
+$copy-btn-bg: #cbd5e1;
+$copy-btn-bg-hover: #e2e8f0;
+$copy-btn-text: #0f172a;
+$strength-bar-bg: #2a323d;
+$option-bg: $bg-color;
+$accent-orange: #f59e0b;
+$accent-red: $tertiary;
+
+:root {
+  --color-primary: #{$primary};
+  --color-secondary: #{$secondary};
+  --color-tertiary: #{$tertiary};
+  --color-neutral: #{$neutral};
+  --color-bg-main: #{$bg-main};
+  --color-text-main: #{$text-main};
+  --color-text-muted: #{$text-muted};
+  --color-card-bg: #{$card-bg};
+  --color-border: #{$border-color};
+  --color-accent-green: #{$accent-green};
+  --color-accent-green-btn: #{$accent-green-btn};
+  --color-surface-dark: #{$surface-dark};
+  --color-surface-darker: #{$surface-darker};
+  --color-surface-badge: #{$surface-badge};
+  --color-on-accent: #{$on-accent};
+  --bg-color: #{$bg-color};
+  --card-bg: #{$card-bg};
+  --border-color: #{$border-color};
+  --accent-green: #{$accent-green};
+  --text-main: #{$text-main};
+  --text-muted: #{$text-muted};
+  --muted-surface: #{$muted-surface};
+  --muted-surface-hover: #{$muted-surface-hover};
+  --copy-btn-bg: #{$copy-btn-bg};
+  --copy-btn-bg-hover: #{$copy-btn-bg-hover};
+  --copy-btn-text: #{$copy-btn-text};
+  --strength-bar-bg: #{$strength-bar-bg};
+  --option-bg: #{$option-bg};
+  --accent-orange: #{$accent-orange};
+  --accent-red: #{$accent-red};
+}

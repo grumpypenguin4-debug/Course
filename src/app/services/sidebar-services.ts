@@ -18,9 +18,12 @@ export class SidebarServices {
   authService = inject(AuthService);
 
   sidebarItems: SidebarItem[] = [
-    { id: 1, title: 'الرئيسية', icon: 'Home', route: '/home', permission: PagePermissions.HOME, canDisable: false },
-    { id: 2, title: 'الملف الشخصي', icon: 'Person', route: '/profile', permission: PagePermissions.PROFILE, canDisable: true },
-    { id: 3, title: 'الإعدادات', icon: 'Settings', route: '/settings', permission: PagePermissions.SETTINGS, canDisable: true }
+    { id: 1, title: 'Home', icon: 'fa-house', route: '/home', permission: PagePermissions.HOME, canDisable: false },
+    { id: 2, title: 'Profile', icon: 'fa-user', route: '/profile', permission: PagePermissions.PROFILE, canDisable: true },
+    { id: 3, title: 'Vault', icon: 'fa-vault', route: '/vault', permission: PagePermissions.VAULT, canDisable: true },
+    { id: 4, title: 'Audit', icon: 'fa-clipboard-list', route: '/audit', permission: PagePermissions.AUDIT, canDisable: true },
+    { id: 5, title: 'Generator', icon: 'fa-bolt', route: '/generator', permission: PagePermissions.GENERATOR, canDisable: true },
+    { id: 6, title: 'Settings', icon: 'fa-gear', route: '/settings', permission: PagePermissions.SETTINGS, canDisable: true },
   ];
 
   visibleSidebarItems = computed(() => {

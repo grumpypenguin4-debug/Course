@@ -1,6 +1,6 @@
 <div class="settings-container">
   <section class="permissions-section">
-    <h2>إدارة الصلاحيات</h2>
+    <h2>Permissions Management</h2>
     <div class="permissions-list">
       @for (permission of permissions; track permission.id) {
       <div class="permission-item">
@@ -9,7 +9,7 @@
             [disabled]="!permission.canDisable && hasPermission()(permission.id)" />
           <span class="permission-label">{{ permission.label }}</span>
           @if (!permission.canDisable) {
-          <span class="badge">إلزامي</span>
+          <span class="badge">Mandatory</span>
           }
         </label>
       </div>

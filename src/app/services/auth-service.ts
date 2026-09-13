@@ -42,9 +42,10 @@ export class AuthService {
     this.userPermissionsSignal.set([
       PagePermissions.HOME,
       PagePermissions.PROFILE,
+      PagePermissions.VAULT,
+      PagePermissions.AUDIT,
+      PagePermissions.GENERATOR,
       PagePermissions.SETTINGS,
-      PagePermissions.EDIT_PROFILE,
-      PagePermissions.DELETE_ACCOUNT
     ]);
 
     return true;

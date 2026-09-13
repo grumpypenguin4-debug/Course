@@ -4,7 +4,7 @@
   left: 0;
   width: 20%;
   height: 95%;
-  background-color: #16202c;
+  background-color: var(--color-primary);
   padding: 1rem;
   z-index: 9999;
   transform: translateX(-100%);
@@ -24,7 +24,7 @@
     .close-btn {
       background: transparent;
       border: none;
-      color: #ffffff;
+      color: var(--color-neutral);
       font-size: 1.5rem;
       cursor: pointer;
     }
@@ -41,24 +41,30 @@
       align-items: center;
       gap: 12px;
       padding: 12px;
-      color: #ffffff;
+      color: var(--color-neutral);
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.2s ease;
 
+      .icon {
+        width: 20px;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+
       &:hover:not(.disabled) {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: color-mix(in srgb, var(--color-neutral) 20%, transparent);
       }
 
       &.active {
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: color-mix(in srgb, var(--color-neutral) 30%, transparent);
         font-weight: 600;
       }
 
       &.disabled {
         opacity: 0.5;
         cursor: not-allowed;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: color-mix(in srgb, var(--color-neutral) 10%, transparent);
       }
     }
   }
@@ -66,13 +72,13 @@
   .sidebar-footer {
     margin-top: auto;
     padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid color-mix(in srgb, var(--color-neutral) 10%, transparent);
 
     .logout-btn-sidebar {
       width: 100%;
       padding: 12px;
-      background-color: #e74c3c;
-      color: #ffffff;
+      background-color: var(--color-tertiary);
+      color: var(--color-neutral);
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -80,7 +86,7 @@
       transition: background-color 0.2s ease;
 
       &:hover {
-        background-color: #c0392b;
+        background-color: color-mix(in srgb, var(--color-tertiary) 85%, black);
       }
     }
   }

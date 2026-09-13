@@ -1,3 +1,94 @@
-<div class="home-content">
-  <h1>{{ 'welcome to the homepage' | capitalize }}</h1>
-</div>
+<section class="home-page">
+  <header class="hero-panel">
+    <div>
+      <p class="eyebrow">Dashboard</p>
+      <h1>Welcome back, Mohamed</h1>
+      <p class="hero-subtitle">A quick overview of the system performance and important activities today.</p>
+    </div>
+
+    <div class="hero-meta">
+      <span class="meta-badge">Online now</span>
+      <time>{{ formattedDate }}</time>
+    </div>
+  </header>
+
+  <div class="stats-grid">
+    @for (item of stats; track item.title) {
+    <article class="stat-card">
+      <div class="stat-icon" [ngClass]="item.tone">
+        <i [class]="item.icon"></i>
+      </div>
+
+      <div class="stat-text">
+        <p>{{ item.title }}</p>
+        <h3>{{ item.value }}</h3>
+      </div>
+
+      <div class="stat-change" [ngClass]="item.change.startsWith('+') ? 'positive' : 'negative'">
+        {{ item.change }}
+      </div>
+    </article>
+    }
+  </div>
+
+  <div class="content-grid">
+    <section class="panel quick-actions-panel">
+      <div class="panel-header">
+        <h2>Quick Actions</h2>
+        <button type="button" class="ghost-btn">View all</button>
+      </div>
+
+      <div class="quick-actions">
+        @for (action of quickActions; track action.label) {
+        <button type="button" class="action-card" [routerLink]="action.route">
+          <span class="action-icon"><i [class]="action.icon"></i></span>
+          <span class="action-content">
+            <strong>{{ action.label }}</strong>
+            <small>{{ action.hint }}</small>
+          </span>
+        </button>
+        }
+      </div>
+    </section>
+
+    <section class="panel activity-panel">
+      <div class="panel-header">
+        <h2>Recent Activity</h2>
+        <button type="button" class="ghost-btn">Refresh</button>
+      </div>
+
+      <ul class="activity-list">
+        @for (activity of recentActivities; track activity.title) {
+        <li>
+          <span class="status-dot" [ngClass]="activity.status"></span>
+          <div>
+            <strong>{{ activity.title }}</strong>
+            <small>{{ activity.subtitle }}</small>
+          </div>
+          <time>{{ activity.time }}</time>
+        </li>
+        }
+      </ul>
+    </section>
+
+    <section class="panel workload-panel">
+      <div class="panel-header">
+        <h2>Performance Metrics</h2>
+      </div>
+
+      <div class="workload-list">
+        @for (item of workload; track item.label) {
+        <div class="workload-item">
+          <div class="label-row">
+            <span>{{ item.label }}</span>
+            <strong>{{ item.percent }}%</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar" [style.width.%]="item.percent"></div>
+          </div>
+        </div>
+        }
+      </div>
+    </section>
+  </div>
+</section>

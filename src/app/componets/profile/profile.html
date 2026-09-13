@@ -1,19 +1,70 @@
-<div class="profile-card">
-  <div class="profile-header">
-    <div class="avatar">MA</div>
-    <h2>محمد السيار</h2>
-    <p class="role">مطور واجهات أمامية</p>
+<section class="profile-page">
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="avatar-wrap">
+        <img [src]="profile.avatar" [alt]="profile.fullName" />
+        <span class="online-badge"></span>
+      </div>
+
+      <div class="profile-meta">
+        <span class="status-chip">{{ profile.status }}</span>
+        <h2>{{ profile.fullName }}</h2>
+
+
+        <div class="profile-actions">
+          <button class="btn btn-primary">Edit Profile</button>
+          <button class="btn btn-secondary">Settings</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-body">
+      <div class="info-panel">
+        <h3>Personal Information</h3>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="label">Email</span>
+            <p>{{ profile.email }}</p>
+          </div>
+
+          <div class="info-item">
+            <span class="label">Phone</span>
+            <p>{{ profile.phone }}</p>
+          </div>
+
+          <div class="info-item">
+            <span class="label">Location</span>
+            <p>{{ profile.location }}</p>
+          </div>
+
+          <div class="info-item">
+            <span class="label">Join Date</span>
+            <p>{{ profile.joinedAt }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-panel">
+        <h3>About</h3>
+        <p>{{ profile.bio }}</p>
+      </div>
+    </div>
+
+    <div class="stats-panel">
+      <h3>Statistics</h3>
+
+      <div class="stats-grid">
+        @for (item of stats; track $index) {
+        <div class="stat-card">
+          <div class="icon"><i [class]="item.icon"></i></div>
+          <div class="content">
+            <strong>{{ item.value }}</strong>
+            <span>{{ item.label }}</span>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
   </div>
-
-  <div class="profile-actions">
-
-    <button *appMyProfileDirective="'EDIT_PROFILE'" class="btn btn-primary">
-      تعديل الملف الشخصي
-    </button>
-
-
-    <button *appMyProfileDirective="'DELETE_ACCOUNT'" class="btn btn-danger">
-      حذف الحساب
-    </button>
-  </div>
-</div>
+</section>

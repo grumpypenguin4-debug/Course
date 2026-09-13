@@ -2,13 +2,14 @@ import { Component, inject } from '@angular/core';
 import { SidebarServices } from '../../services/sidebar-services';
 import { Router, RouterLink, RouterLinkActive, NavigationEnd } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
-import { AppClickOutsideDirective } from '../../directive/.directive';
+import { AppClickOutsideDirective } from '../../directive/clickoutside';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [RouterLink, RouterLinkActive, AppClickOutsideDirective],
+  imports: [RouterLink, RouterLinkActive, AppClickOutsideDirective, MatButton],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })

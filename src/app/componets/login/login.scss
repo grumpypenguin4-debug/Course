@@ -6,66 +6,93 @@
 }
 
 .login-card {
-  background: #ffffff;
+  background: var(--color-neutral);
   padding: 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-primary) 8%, transparent);
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
 }
 
 .login-card h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #1a1a1a;
-  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .form-group {
   margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.full-width,
+.form-group mat-form-field,
+.form-group .mat-mdc-form-field {
+  width: 100%;
+  display: block;
+}
+
+.form-group .mat-mdc-form-field {
+  min-height: 56px;
+}
+
+.form-group .mat-mdc-text-field-wrapper {
+  border-radius: 10px !important;
+  min-height: 56px;
+}
+
+.form-group .mat-mdc-form-field-infix {
+  min-height: 56px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.form-group .mat-mdc-form-field-flex {
+  min-height: 56px;
+}
+
+.form-group .mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex {
+  align-items: center;
+}
+
+.form-group .mat-mdc-icon-button {
+  width: 42px;
+  height: 42px;
+  margin-right: 4px;
+}
+
+.form-group .mat-mdc-form-field-label {
+  font-size: 0.95rem;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #4a5568;
+  color: var(--color-primary);
   font-size: 0.9rem;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid #cbd5e0;
-  border-radius: 6px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.form-group input:focus {
-  border-color: #3182ce;
 }
 
 .btn-submit {
   width: 100%;
-  padding: 0.75rem;
-  background-color: #3182ce;
-  color: white;
+  padding: 0.8rem 1rem;
+  background-color: var(--color-secondary);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
   margin-top: 0.5rem;
 }
 
 .btn-submit:hover {
-  background-color: #2b6cb0;
+  background-color: color-mix(in srgb, var(--color-secondary) 85%, black);
 }
 
 .error-message {
-  color: #e53e3e;
+  color: var(--color-tertiary);
   font-size: 0.85rem;
   margin-top: 0.4rem;
 }

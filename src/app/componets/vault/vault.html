@@ -1,0 +1,81 @@
+<div class="vault-container">
+
+  <header class="vault-header">
+    <div class="header-titles">
+      <h1>My Vault</h1>
+      <p>{{ encryptedEntriesCount }} Encrypted Entries</p>
+    </div>
+    <button class="add-btn" (click)="onAddNewEntry()">
+      <i class="fa-solid fa-plus"></i> Add New Entry
+    </button>
+  </header>
+
+
+  <div class="filters-bar">
+    @for (cat of categories; track $index) {
+    <button [class.active]="selectedCategory() === cat" (click)="selectCategory(cat)">
+      {{ cat }}
+    </button>
+    }
+  </div>
+
+  <hr class="divider">
+
+
+  <div class="cards-grid">
+    @for (entry of filteredEntries(); track $index) {
+    <div class="vault-card" [class.has-accent]="entry.accentColor" [style.border-left-color]="entry.accentColor"
+      [class.clickable]="entry.title === 'Google Workspace' && !entry.isArchived"
+      (click)="entry.title === 'Google Workspace' && !entry.isArchived ? openCredentials(entry) : null">
+
+      <div class="card-top">
+        <div class="card-icon" [style.background-color]="entry.iconBg">
+          <i [ngClass]="entry.icon"></i>
+        </div>
+        <div class="card-info">
+          <h3>{{ entry.title }}</h3>
+          <span class="category-tag">{{ entry.category }}</span>
+        </div>
+      </div>
+
+
+      <div class="password-box">
+        <span class="masked-pass">
+          {{ entry.showPassword ? entry.plainPassword : '••••••••••••' }}
+        </span>
+        @if (!entry.isArchived) {
+        <div class="card-actions">
+          <button (click)="$event.stopPropagation(); togglePasswordVisibility(entry)" title="Toggle Password">
+            <i class="fa-regular" [ngClass]="entry.showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+          <button (click)="$event.stopPropagation(); copyPassword(entry.plainPassword)" title="Copy">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+        </div>
+        }
+      </div>
+
+
+      @if (!entry.isArchived) {
+      <div class="card-footer">
+        <span class="strength-label">Strength:</span>
+        <div class="strength-bars">
+          @for (bar of [1, 2, 3, 4, 5]; track $index) {
+          <span [class.active]="$index < entry.strengthScore"
+            [style.background-color]="$index < entry.strengthScore ? entry.strengthColor : 'var(--color-surface-darker)'">
+          </span>
+          }
+        </div>
+        <span class="strength-text" [style.color]="entry.strengthColor">
+          {{ entry.strengthText }}
+        </span>
+      </div>
+      } @else {
+      <div class="card-footer">
+        <span class="archived-badge">Archived</span>
+      </div>
+      }
+    </div>
+    }
+
+  </div>

@@ -40,6 +40,30 @@ export const routes: Routes = [
         loadComponent: () => import('./componets/profile/profile').then(m => m.Profile)
       },
       {
+        path: 'credentials',
+        canActivate: [permissionGuard],
+        data: { permission: PagePermissions.VAULT },
+        loadComponent: () => import('./componets/credentials/credentials').then(m => m.Credentials)
+      },
+      {
+        path: 'vault',
+        canActivate: [permissionGuard],
+        data: { permission: PagePermissions.VAULT },
+        loadComponent: () => import('./componets/vault/vault').then(m => m.Vault)
+      },
+      {
+        path: 'audit',
+        canActivate: [permissionGuard],
+        data: { permission: PagePermissions.AUDIT },
+        loadComponent: () => import('./componets/audit/audit').then(m => m.Audit)
+      },
+      {
+        path: 'generator',
+        canActivate: [permissionGuard],
+        data: { permission: PagePermissions.GENERATOR },
+        loadComponent: () => import('./componets/generator/generator').then(m => m.Generator)
+      },
+      {
         path: 'settings',
         canActivate: [permissionGuard],
         data: { permission: PagePermissions.SETTINGS },

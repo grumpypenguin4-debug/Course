@@ -3,40 +3,40 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #1f2b3a;
+  background: var(--color-primary);
   padding: 1rem;
 }
 
 .unauthorized-content {
-  background: white;
+  background: var(--color-neutral);
   border-radius: 10px;
   padding: 3rem 2rem;
   max-width: 500px;
   width: 100%;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 40px color-mix(in srgb, var(--color-primary) 20%, transparent);
   text-align: center;
 
   h1 {
-    color: #333;
+    color: var(--color-primary);
     font-size: 2rem;
     margin: 1rem 0;
   }
 
   p {
-    color: #666;
+    color: var(--color-primary);
     font-size: 1rem;
     margin: 1rem 0;
     line-height: 1.6;
 
     &.sub-text {
-      color: #999;
+      color: color-mix(in srgb, var(--color-primary) 40%, var(--color-neutral));
       font-size: 0.9rem;
     }
   }
 
   .back-btn {
-    background: #0f941a;
-    color: white;
+    background: var(--color-secondary);
+    color: var(--color-neutral);
     border: none;
     padding: 0.75rem 2rem;
     border-radius: 6px;
@@ -49,7 +49,7 @@
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: gray;
+      box-shadow: color-mix(in srgb, var(--color-primary) 25%, transparent);
     }
 
     &:active {
