@@ -6,7 +6,7 @@ import { AppClickOutsideDirective } from '../../directive/clickoutside';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButton, MatButtonModule } from '@angular/material/button';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent, DialogData } from '../dialog-component/dialog-component';
 
 @Component({
@@ -19,7 +19,7 @@ export class Sidebar {
   sidebarServices = inject(SidebarServices);
   router = inject(Router);
   authService = inject(AuthService);
-    dialog = inject(MatDialog);
+  dialog = inject(MatDialog);
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const data: DialogData = {
@@ -29,7 +29,7 @@ export class Sidebar {
       confirmLabel: 'Yes',
       onConfirm: () => this.onLogout(),
     };
-    this.dialog.open(DialogComponent,{
+    this.dialog.open(DialogComponent, {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,

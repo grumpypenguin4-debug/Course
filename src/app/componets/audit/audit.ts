@@ -1,33 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
-
-type AuditRange = '24h' | '7d' | '30d' | '90d';
-type AuditFilterType = 'All' | 'Security' | 'Access' | 'System' | 'Generator';
-type TrendType = 'up' | 'down' | 'neutral';
-type EventStatus = 'Success' | 'Warning' | 'Info';
-
-interface AuditMetric {
-  label: string;
-  value: string;
-  change: string;
-  trend: TrendType;
-  icon: string;
-}
-
-interface AuditEvent {
-  id: number;
-  title: string;
-  actor: string;
-  time: string;
-  type: AuditFilterType;
-  status: EventStatus;
-}
-
-interface ComplianceItem {
-  label: string;
-  value: number;
-  tone: 'good' | 'warn';
-}
+import { AuditRange, AuditFilterType, TrendType, EventStatus, AuditMetric, AuditEvent, ComplianceItem } from '../../models';
 
 @Component({
   selector: 'app-audit',

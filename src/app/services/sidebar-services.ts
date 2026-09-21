@@ -1,15 +1,7 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { AuthService } from './auth-service';
 import { PagePermissions } from './permissions.enum';
-
-interface SidebarItem {
-  id: number;
-  title: string;
-  icon: string;
-  route: string;
-  permission: PagePermissions;
-  canDisable?: boolean;
-}
+import { SidebarItem } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class SidebarServices {

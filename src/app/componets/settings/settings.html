@@ -5,8 +5,10 @@
       @for (permission of permissions; track permission.id) {
       <div class="permission-item">
         <label [class.disabled]="!permission.canDisable && hasPermission()(permission.id)">
-          <input type="checkbox" [checked]="hasPermission()(permission.id)" (change)="togglePermission(permission.id)"
-            [disabled]="!permission.canDisable && hasPermission()(permission.id)" />
+          <mat-slide-toggle [checked]="hasPermission()(permission.id)"
+            [disabled]="!permission.canDisable && hasPermission()(permission.id)"
+            (change)="togglePermission(permission.id)">
+          </mat-slide-toggle>
           <span class="permission-label">{{ permission.label }}</span>
           @if (!permission.canDisable) {
           <span class="badge">Mandatory</span>

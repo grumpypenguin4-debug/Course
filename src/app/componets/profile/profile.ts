@@ -1,16 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-
-type ProfileStat = {
-  label: string;
-  value: string;
-  icon: string;
-};
+import { RouterLink } from '@angular/router';
+import { ProfileStat } from '../../models';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })

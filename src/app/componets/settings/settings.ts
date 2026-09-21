@@ -2,10 +2,11 @@ import { Component, inject, computed } from '@angular/core';
 import { AuthService } from '../../services/auth-service';
 import { PagePermissions } from '../../services/permissions.enum';
 import { FormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-settings',
-  imports: [FormsModule],
+  imports: [FormsModule, MatSlideToggleModule],
   templateUrl: './settings.html',
   styleUrl: './settings.scss',
 })

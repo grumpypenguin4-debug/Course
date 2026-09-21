@@ -1,23 +1,24 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { GoogleWorkspaceCredential } from '../../models';
 
-interface GoogleWorkspaceCredential {
-  title: string;
-  category: string;
-  email: string;
-  password: string;
-  domain: string;
-  adminEmail: string;
-  phone?: string;
-  recoveryEmail?: string;
-  icon: string;
-  iconBg: string;
-  accentColor?: string;
-  strengthScore: number;
-  strengthText: string;
-  strengthColor: string;
-}
+const DEFAULT_CREDENTIAL: GoogleWorkspaceCredential = {
+  title: 'Google Workspace',
+  category: 'Work',
+  email: 'admin@yourdomain.com',
+  password: 'YourPassword123!',
+  domain: 'yourdomain.com',
+  adminEmail: 'admin@yourdomain.com',
+  phone: '+1 234 567 890',
+  recoveryEmail: 'recovery@yourdomain.com',
+  icon: 'fa-solid fa-cloud',
+  iconBg: 'var(--color-card-bg)',
+  accentColor: 'var(--color-accent-green)',
+  strengthScore: 2,
+  strengthText: 'Weak',
+  strengthColor: 'var(--color-tertiary)',
+};
 
 @Component({
   selector: 'app-credentials',
@@ -29,41 +30,30 @@ interface GoogleWorkspaceCredential {
 export class Credentials implements OnInit {
   router = inject(Router);
 
-  credential: GoogleWorkspaceCredential | null = null;
-  showPassword = false;
+
+  credential = signal<GoogleWorkspaceCredential>(DEFAULT_CREDENTIAL);
+  showPassword = signal<boolean>(false);
 
   ngOnInit(): void {
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation?.extras?.state?.['entry']) {
-      this.credential = navigation.extras.state['entry'] as GoogleWorkspaceCredential;
-    } else {
-      this.credential = {
-        title: 'Google Workspace',
-        category: 'Work',
-        email: 'admin@yourdomain.com',
-        password: 'YourPassword123!',
-        domain: 'yourdomain.com',
-        adminEmail: 'admin@yourdomain.com',
-        phone: '+1 234 567 890',
-        recoveryEmail: 'recovery@yourdomain.com',
-        icon: 'fa-solid fa-cloud',
-        iconBg: 'var(--color-card-bg)',
-        accentColor: 'var(--color-accent-green)',
-        strengthScore: 2,
-        strengthText: 'Weak',
-        strengthColor: 'var(--color-tertiary)',
-      };
+    const stateEntry = window.history.state?.['entry'] as GoogleWorkspaceCredential | undefined;
+
+    if (stateEntry) {
+      this.credential.set(stateEntry);
     }
   }
 
   togglePasswordVisibility(): void {
-    this.showPassword = !this.showPassword;
+    this.showPassword.update((value) => !value);
   }
 
-  copyPassword(password: string): void {
-    navigator.clipboard.writeText(password).then(() => {
+  async copyPassword(password: string): Promise<void> {
+    try {
+      await navigator.clipboard.writeText(password);
+
       console.log('Password copied to clipboard');
-    });
+    } catch (err) {
+      console.error('Failed to copy password: ', err);
+    }
   }
 
   goBack(): void {

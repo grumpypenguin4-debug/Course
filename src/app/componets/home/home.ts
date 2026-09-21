@@ -1,40 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-type StatTone = 'blue' | 'green' | 'amber' | 'purple';
-
-type StatItem = {
-  title: string;
-  value: string;
-  change: string;
-  icon: string;
-  tone: StatTone;
-};
-
-type QuickAction = {
-  label: string;
-  hint: string;
-  icon: string;
-  route: string;
-};
-
-type ActivityItem = {
-  title: string;
-  status: 'success' | 'warning' | 'info';
-  subtitle: string;
-  time: string;
-};
-
-type WorkloadItem = {
-  label: string;
-  percent: number;
-};
+import {StatItem, QuickAction, ActivityItem, WorkloadItem } from '../../models';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule,RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

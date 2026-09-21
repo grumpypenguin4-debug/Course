@@ -1,27 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
-
-type VaultCategory = 'All' | 'Social' | 'Finance' | 'Work' | 'Personal';
-
-interface VaultEntry {
-  title: string;
-  category: string;
-  plainPassword: string;
-  showPassword?: boolean;
-  icon: string;
-  iconBg: string;
-  accentColor?: string;
-  strengthScore: number;
-  strengthText: string;
-  strengthColor: string;
-  isArchived?: boolean;
-  email?: string;
-  domain?: string;
-  adminEmail?: string;
-  phone?: string;
-  recoveryEmail?: string;
-}
+import { GoogleWorkspaceCredential, VaultCategory, VaultEntry } from '../../models';
 
 @Component({
   selector: 'app-vault',
@@ -114,6 +94,23 @@ export class Vault {
       return;
     }
 
-    this.router.navigate(['/credentials']);
+    const credential: GoogleWorkspaceCredential = {
+      title: entry.title,
+      category: entry.category,
+      email: entry.email ?? 'admin@yourdomain.com',
+      password: entry.plainPassword,
+      domain: entry.domain ?? 'yourdomain.com',
+      adminEmail: entry.adminEmail ?? 'admin@yourdomain.com',
+      phone: entry.phone ?? '+1 234 567 890',
+      recoveryEmail: entry.recoveryEmail ?? 'recovery@yourdomain.com',
+      icon: entry.icon,
+      iconBg: entry.iconBg,
+      accentColor: entry.accentColor ?? 'var(--color-accent-green)',
+      strengthScore: entry.strengthScore,
+      strengthText: entry.strengthText,
+      strengthColor: entry.strengthColor,
+    };
+
+    this.router.navigate(['/credentials'], { state: { entry: credential } });
   }
 }

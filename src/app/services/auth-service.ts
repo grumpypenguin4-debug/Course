@@ -10,8 +10,13 @@ export class AuthService {
 
   constructor() {
     const saved = localStorage.getItem('permissions');
+    const token = localStorage.getItem('token');
     if (saved) {
       this.userPermissionsSignal.set(JSON.parse(saved));
+    }
+    if (token && !saved) {
+      localStorage.removeItem('token');
+      this.token.set(null);
     }
   }
 
@@ -39,7 +44,7 @@ export class AuthService {
     localStorage.setItem('token', fakeToken);
     this.token.set(fakeToken);
 
-    this.userPermissionsSignal.set([
+    this.updatePermissions([
       PagePermissions.HOME,
       PagePermissions.PROFILE,
       PagePermissions.VAULT,
@@ -53,6 +58,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('permissions');
     this.token.set(null);
     this.userPermissionsSignal.set([]);
     this.router.navigateByUrl('/login');
