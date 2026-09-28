@@ -9,11 +9,7 @@ import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule],
+  imports: [ReactiveFormsModule,MatButtonModule,MatFormFieldModule,MatInputModule,MatIconModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })

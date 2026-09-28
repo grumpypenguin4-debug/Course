@@ -13,9 +13,9 @@ export class Generator {
   length = signal<number>(16);
 
   includeUppercase = signal<boolean>(true);
-  includeLowercase = signal<boolean>(true);
+  includeLowercase = signal<boolean>(false);
   includeNumbers = signal<boolean>(true);
-  includeSymbols = signal<boolean>(true);
+  includeSymbols = signal<boolean>(false);
 
   strengthText = signal<string>('Strong');
   strengthLevel = signal<string>('Strong');

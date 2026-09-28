@@ -1,24 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { GoogleWorkspaceCredential } from '../../models';
+import { DEFAULT_CREDENTIAL, GoogleWorkspaceCredential } from '../../models';
 
-const DEFAULT_CREDENTIAL: GoogleWorkspaceCredential = {
-  title: 'Google Workspace',
-  category: 'Work',
-  email: 'admin@yourdomain.com',
-  password: 'YourPassword123!',
-  domain: 'yourdomain.com',
-  adminEmail: 'admin@yourdomain.com',
-  phone: '+1 234 567 890',
-  recoveryEmail: 'recovery@yourdomain.com',
-  icon: 'fa-solid fa-cloud',
-  iconBg: 'var(--color-card-bg)',
-  accentColor: 'var(--color-accent-green)',
-  strengthScore: 2,
-  strengthText: 'Weak',
-  strengthColor: 'var(--color-tertiary)',
-};
 
 @Component({
   selector: 'app-credentials',

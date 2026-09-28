@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { GoogleWorkspaceCredential, VaultCategory, VaultEntry } from '../../models';
+import { GoogleWorkspaceCredential, VaultCategory, VaultEntry, credentialFromEntry, entries } from '../../models';
 
 @Component({
   selector: 'app-vault',
@@ -18,50 +18,7 @@ export class Vault {
   categories: VaultCategory[] = ['All', 'Social', 'Finance', 'Work', 'Personal'];
   selectedCategory = signal<VaultCategory>('All');
 
-  entries: VaultEntry[] = [
-    {
-      title: 'Chase Bank',
-      category: 'Finance',
-      plainPassword: 'SuperSecret123',
-      showPassword: false,
-      icon: 'fa-solid fa-building-columns',
-      iconBg: 'var(--color-card-bg)',
-      accentColor: 'var(--color-accent-green)',
-      strengthScore: 5,
-      strengthText: 'Strong',
-      strengthColor: 'var(--color-accent-green)',
-    },
-    {
-      title: 'Google Workspace',
-      category: 'Work',
-      plainPassword: 'WeakPassword!',
-      showPassword: false,
-      icon: 'fa-solid fa-cloud',
-      iconBg: 'var(--color-card-bg)',
-      accentColor: 'var(--color-accent-green)',
-      strengthScore: 2,
-      strengthText: 'Weak',
-      strengthColor: 'var(--color-tertiary)',
-      email: 'admin@yourdomain.com',
-      domain: 'yourdomain.com',
-      adminEmail: 'admin@yourdomain.com',
-      phone: '+1 234 567 890',
-      recoveryEmail: 'recovery@yourdomain.com',
-    },
-    {
-      title: 'Old Blog Server',
-      category: 'Personal',
-      plainPassword: 'OldServerPass2020',
-      showPassword: false,
-      icon: 'fa-solid fa-globe',
-      iconBg: 'var(--color-card-bg)',
-      isArchived: true,
-      strengthScore: 0,
-      strengthText: '',
-      strengthColor: '',
-    },
-  ];
-
+  entries: VaultEntry[] = entries;
 
   filteredEntries = computed(() => {
     const category = this.selectedCategory();
@@ -94,23 +51,7 @@ export class Vault {
       return;
     }
 
-    const credential: GoogleWorkspaceCredential = {
-      title: entry.title,
-      category: entry.category,
-      email: entry.email ?? 'admin@yourdomain.com',
-      password: entry.plainPassword,
-      domain: entry.domain ?? 'yourdomain.com',
-      adminEmail: entry.adminEmail ?? 'admin@yourdomain.com',
-      phone: entry.phone ?? '+1 234 567 890',
-      recoveryEmail: entry.recoveryEmail ?? 'recovery@yourdomain.com',
-      icon: entry.icon,
-      iconBg: entry.iconBg,
-      accentColor: entry.accentColor ?? 'var(--color-accent-green)',
-      strengthScore: entry.strengthScore,
-      strengthText: entry.strengthText,
-      strengthColor: entry.strengthColor,
-    };
-
+    const credential: GoogleWorkspaceCredential = credentialFromEntry(entry);
     this.router.navigate(['/credentials'], { state: { entry: credential } });
   }
 }
